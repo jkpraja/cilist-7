@@ -1,0 +1,39 @@
+services:
+  frontend:
+    image: frontend:1.1
+    build: ./frontend
+    ports:
+      - 80:3000
+    #volumes:
+    #  - sourcecode:/var/local/apache2/htdocs
+    networks:
+      - appnet
+  backend:
+    image: backend:1.1
+    build: ./backend
+    ports:
+      - 5000:5000
+    links:
+      - db
+    networks:
+      - appnet
+  db:
+    image: db:1.1
+    #image: pesbukdb
+    build: ./database
+    volumes:
+      #- ./sosial-media/dump.sql:/etc/mysql/dump.sql
+      #- ./database/crud_db.sql:/docker-entrypoint-initdb.d/crud_db.sql
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    networks:
+      - appnet
+    #command: ["bin/sh", "./entrypoint.sh"]
+volumes:
+  db-data:
+networks:
+  appnet:
