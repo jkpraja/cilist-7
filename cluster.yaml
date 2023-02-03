@@ -6,22 +6,24 @@ metadata:
   region: us-east-1
   version: "1.21"
 
-#vpc:
-#  id: vpc-07c6923006dddfd5a
-#  subnets:
-#    private:
-#      us-east-1a: {id: subnet-034e6de05a2c61e61}
-#      us-east-1b: {id: subnet-041993b594be17c95}
+vpc:
+  id: vpc-0e35f52e44ade4a32
+  subnets:
+    private:
+      us-east-1a: {id: subnet-090a10c8782f7065c}
+      us-east-1b: {id: subnet-0c23173f9d174a6c4}
+      us-east-1c: {id: subnet-08467420d7306c0e0}
 #    public:
 #      us-east-1c: {id: subnet-021a9d64e8cfb11b2}
 
 managedNodeGroups:
-  - name: ngcilsy
+  - name: ng-cilist
     instanceType: t2.small
     desiredCapacity: 1
     minSize: 1
-    maxSize: 2
-    volumeSize: 
+    maxSize: 8
+    volumeSize: 10
+    privateNetworking: true
 
-availabilityZones: ['us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d']
+#availabilityZones: ['us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d']
 #    privateNetworking: true
