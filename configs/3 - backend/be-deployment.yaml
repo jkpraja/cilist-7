@@ -12,11 +12,19 @@ spec:
       labels:
         app: proj7-be
     spec:
+      volumes:
+        - name: import-db
+          configMap:
+            name: be-configmap
       containers:
       - name: proj7-be
         image: jkpraja/be:latest
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - name: import-db
+          mountPath: "/app/crud_db.sql"
+          subPath: "crud_db.sql"
         env:
         - name: DATABASE_HOST
           valueFrom:
