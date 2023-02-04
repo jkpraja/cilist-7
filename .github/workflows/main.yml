@@ -1,6 +1,6 @@
 
 name: ci
-
+run-nam: ${{ github.actor }} is learning GitHub Actions
 on:
   pull_request:
     branches:
@@ -31,4 +31,4 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: jkpraja/backend:latest, jkpraja/frontend:${{ github.run_number }}
+          tags: jkpraja/backend:latest, jkpraja/backend:${{ github.run_number }}
