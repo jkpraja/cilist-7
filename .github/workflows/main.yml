@@ -1,6 +1,6 @@
 
 name: ci
-run-nam: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   pull_request:
     branches:
