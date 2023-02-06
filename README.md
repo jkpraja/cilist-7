@@ -15,7 +15,7 @@ A startup company would like to migrate their deployment on premise to the Kuber
 This application is react and node js based app which is consist of Backend, Frontend and Database. The Frontend is based on React and Backend is using Express.
 
 ## Architecture
-![Topology](https://raw.githubusercontent.com/jkpraja/dockerize-aws-apps/bd68009a9be5bfbd204a1d17084a2184ea7d1af8/Proj6.png)
+![Topology](https://raw.githubusercontent.com/jkpraja/cilist-7/master/EKS%20Deployment.png)
 ## You'll need
 - An AWS Account
 - At least 2 applications, in this case, we'll use:
