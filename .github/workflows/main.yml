@@ -49,7 +49,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Updae kubeconfig
+      - name: Update kubeconfig
         run: aws eks update-kubeconfig --name proj7 --region us-east-1
       
       - name: Deploy image to Amazon EKS
