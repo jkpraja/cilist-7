@@ -28,7 +28,7 @@ jobs:
       - name: Create kubeconfig
         run: |
           mkdir ${HOME}/.kube
-          pwd
+          cat ${HOME}
           echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
       - name: Use context
         run: aws eks update-kubeconfig --name proj7 --region us-east-1
