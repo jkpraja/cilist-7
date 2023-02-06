@@ -10,7 +10,7 @@ on:
   #    - master
 
 jobs:
-  build-container:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,11 +32,6 @@ jobs:
           context: ./backend
           push: true
           tags: jkpraja/backend:latest, jkpraja/backend:${{ github.run_number }}
-
-  deploy-image:
-    runs-on: ubuntu-latest
-    needs: build-container
-    steps:
       - name: Install kubectl
         uses: azure/setup-kubectl@v3
         with:
