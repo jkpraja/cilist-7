@@ -32,3 +32,9 @@ jobs:
           context: ./backend
           push: true
           tags: jkpraja/backend:latest, jkpraja/backend:${{ github.run_number }}
+  deploy-image-to-eks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        run: |
+          kubectl apply -f eks/aws-auth.yaml

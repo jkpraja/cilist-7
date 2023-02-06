@@ -21,6 +21,13 @@ spec:
         image: jkpraja/be:latest
         ports:
         - containerPort: 5000
+        resources:
+          limits:
+            cpu: 700m
+            memory: 450Mi
+          requests:
+            cpu: 600m
+            memory: 320Mi
         volumeMounts:
         - name: import-db
           mountPath: "/app/crud_db.sql"

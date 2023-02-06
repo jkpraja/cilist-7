@@ -4,6 +4,7 @@ metadata:
   name: proj7-fe
   #namespace: devops-jkpraja
 spec:
+  #replicas: 5
   selector:
     matchLabels:
       app: proj7-fe
@@ -21,6 +22,13 @@ spec:
         #    cpu: "500m"
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            cpu: 700m
+            memory: 450Mi
+          requests:
+            cpu: 600m
+            memory: 320Mi
         env:
         - name: REACT_APP_BACKEND_URL
           valueFrom:

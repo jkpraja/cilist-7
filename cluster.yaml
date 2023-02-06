@@ -14,22 +14,33 @@ vpc:
         id: subnet-090a10c8782f7065c
       us-east-1b: 
         id: subnet-0c23173f9d174a6c4
+      us-east-1c:
+        id: subnet-01c685d09e9dcba0e
+      us-east-1d:
+        id: subnet-079af1f93f1338cf4
     public:
+      us-east-1a:
+        id: subnet-059952663aed55e8c
+      us-east-1b:
+        id: subnet-0a265aeca07ad5d90
       us-east-1c: 
         id: subnet-08467420d7306c0e0
       us-east-1d: 
-        id: subnet-05a33fa8e9ea5cbd5
+        id: subnet-0f49e8b0a143152a4
 #availabilityZones:
 #- us-east-1a
 #- us-east-1b
 #- us-east-1c
 managedNodeGroups:
   - name: cilist
-    instanceType: t2.small
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+    instanceType: t3a.small
     desiredCapacity: 1
     minSize: 1
     maxSize: 4
-
+    #propagateASGTags: true
     #volumeSize: 10
     privateNetworking: true
 
