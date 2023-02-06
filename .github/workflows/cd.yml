@@ -1,5 +1,5 @@
 name: cd
-run-name: ${{ github.actor }} is learning GitHub Actions
+#run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   #pull_request:
   #  branches:
@@ -30,6 +30,7 @@ jobs:
           mkdir ${HOME}/.kube
           echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           cat ${HOME}/.kube/config
+          aws eks update-kubeconfig --name proj7 --region us-east-1 --profile eksctl
       - name: Use context
         run: kubectl config use-context proj7
       - name: Deploy image to Amazon EKS
