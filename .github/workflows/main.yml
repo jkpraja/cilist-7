@@ -12,6 +12,7 @@ on:
 
 jobs:
   deploy:
+    name: Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -48,5 +49,6 @@ jobs:
         run: aws eks update-kubeconfig --name proj7 --region us-east-1
       - name: Deploy image to Amazon EKS
         run: |
+          kubectl apply -f eks/aws-auth.yaml
           kubectl apply -f 'configs/2 - frontend'
           kubectl apply -f 'configs/3 - backend'
