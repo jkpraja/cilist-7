@@ -25,11 +25,15 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Create kubeconfig
-        run: |
-          mkdir ${HOME}/.kube
-          cat ${{ secrets.KUBE_CONFIG }}
-          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+      - name: Update kubeconfig
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: get pods
+        #run: |
+        #  mkdir ${HOME}/.kube
+        #  echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
       - name: Use context
         run: aws eks update-kubeconfig --name proj7 --region us-east-1
       - name: Deploy image to Amazon EKS
